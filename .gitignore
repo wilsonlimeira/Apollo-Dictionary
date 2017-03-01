@@ -45,3 +45,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Wilson
+/packages
+
+/Wilson_oficial/Wilson_oficial.UWP
+/Wilson_oficial/Wilson_oficial.Windows
+/Wilson_oficial/Wilson_oficial.WinPhone
+
+/Wilson_oficial/Wilson_oficial.Droid/bin
+/Wilson_oficial/Wilson_oficial.Droid/obj
+
+/Wilson_oficial/Wilson_oficial.iOS/bin
+/Wilson_oficial/Wilson_oficial.iOS/obj

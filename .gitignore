@@ -48,6 +48,7 @@ Temporary Items
 
 # Wilson
 /packages
+<<<<<<< HEAD
 
 /Wilson_oficial/Wilson_oficial.UWP
 /Wilson_oficial/Wilson_oficial.Windows
@@ -58,3 +59,5 @@ Temporary Items
 
 /Wilson_oficial/Wilson_oficial.iOS/bin
 /Wilson_oficial/Wilson_oficial.iOS/obj
+=======
+>>>>>>> origin/master

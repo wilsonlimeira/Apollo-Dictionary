@@ -10,17 +10,20 @@ namespace Wilson_oficial.Pages
 {
 	public partial class SearchPage : ContentPage
 	{
-        private List<Word> _word;
+        private List<Word> _words;
 
 		public SearchPage ()
 		{
 			InitializeComponent ();
 
-            _word = new List<Word>();
-            _word.Add(new Word { Name = "NHS", Definition = "British health system" });
-            _word.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
+            _words = new List<Word>();
+            _words.Add(new Word { Name = "NHS", Definition = "British health system" });
+            _words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
 
-            this.list_words.ItemsSource = this.Listing();
+            search_field.TextChanged += Search_field_TextChanged;
+
+            //Add the list to the XAML
+            list_words.ItemsSource = Listing();
 
             /*var search_field = new SearchBar
             {
@@ -36,9 +39,19 @@ namespace Wilson_oficial.Pages
             };*/
         }
 
-        public IEnumerable<GroupingList<char, Word>> Listing()
+        private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
         {
-            return from word in _word
+            list_words.ItemsSource = Listing(search_field.Text);
+        }
+
+        public IEnumerable<GroupingList<char, Word>> Listing(string filter = "")
+        {
+            IEnumerable<Word> filtered_words = _words;
+
+            if(!string.IsNullOrEmpty(filter))
+                filtered_words = _words.Where(l => l.Name.ToLower().Contains(filter.ToLower()));
+
+            return from word in filtered_words
                    orderby word.Name
                    group word by word.Name[0] into groups
                    select new GroupingList<char, Word>(groups.Key, groups);

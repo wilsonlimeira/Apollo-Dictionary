@@ -8,8 +8,8 @@ using Xamarin.Forms;
 
 namespace Wilson_oficial.Pages
 {
-	public class HomePage : TabbedPage
-	{
+	public class HomePage : TabbedPage //tem outras opções, ver depois: https://blog.xamarin.com/wp-content/uploads/2014/06/Pages-sml.png
+    {
 		public HomePage ()
 		{
             Title = "Apollo";

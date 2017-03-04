@@ -56,6 +56,13 @@ namespace Wilson_oficial.Pages
             var item = e.Item as Word;
 
             ShowWordSection(item);
+
+            Application.Current.Properties["a"] = item.Name; //Add searched word into Properties
+            //Application.Current.Properties.Keys.
+            //TODO see the best way to use it
+
+            //TODO save searched word http://stackoverflow.com/questions/31655327/how-can-i-save-some-user-data-locally-on-my-xamarin-forms-app
+            //Add 
         }
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)

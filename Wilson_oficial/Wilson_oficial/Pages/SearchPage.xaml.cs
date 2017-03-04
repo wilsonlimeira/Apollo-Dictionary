@@ -31,17 +31,31 @@ namespace Wilson_oficial.Pages
             list_words.ItemTapped += List_words_ItemTapped;
         }
 
-        public void ShowWordSection()
+        public void ShowWordSection(Word item)
         {
-            Content = new StackLayout();
+            var text = new Label()
+            {
+                Text = item.Name,
+                FontSize = 18
+            };
+
+            Content = new StackLayout
+            {
+                Children =
+                {
+                    text
+                }
+            };
             //TODO IMPLEMENT HERE
         }
 
         private void List_words_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            list_words.IsVisible = false;
+            list_words.IsVisible = false; //hide the list of the View
 
-            ShowWordSection();
+            var item = e.Item as Word;
+
+            ShowWordSection(item);
         }
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)

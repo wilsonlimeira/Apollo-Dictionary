@@ -14,7 +14,6 @@ namespace Wilson_oficial.Pages
 		{
             Title = "Apollo";
 
-            //TODO Verificar se a pagina nao foi aberta antes
             Children.Add(new SearchPage()
             {
                 Title = "Search"
@@ -24,6 +23,12 @@ namespace Wilson_oficial.Pages
             Children.Add(new CategoriesPage()
             {
                 Title = "Categories"
+                //TODO Add icon
+            });
+
+            Children.Add(new HistoryPage()
+            {
+                Title = "History"
                 //TODO Add icon
             });
         }

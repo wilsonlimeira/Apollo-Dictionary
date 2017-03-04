@@ -20,23 +20,28 @@ namespace Wilson_oficial.Pages
             _words.Add(new Word { Name = "NHS", Definition = "British health system" });
             _words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
 
+           
             search_field.TextChanged += Search_field_TextChanged;
+            
 
             //Add the list to the XAML
             list_words.ItemsSource = Listing();
 
-            /*var search_field = new SearchBar
-            {
-                Placeholder = "Search here..."
-            };
+            //Click on the item
+            list_words.ItemTapped += List_words_ItemTapped;
+        }
 
-            Content = new StackLayout //TODO maybe change this for GRID, people said it's faster
-            {
-                Children =
-                {
-                    search_field
-                }
-            };*/
+        public void ShowWordSection()
+        {
+            Content = new StackLayout();
+            //TODO IMPLEMENT HERE
+        }
+
+        private void List_words_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            list_words.IsVisible = false;
+
+            ShowWordSection();
         }
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,6 +51,7 @@ namespace Wilson_oficial.Pages
 
         public IEnumerable<GroupingList<char, Word>> Listing(string filter = "")
         {
+            //TODO ajeitar o erro da busca OU buscar somente quando clicarem busca
             IEnumerable<Word> filtered_words = _words;
 
             if(!string.IsNullOrEmpty(filter))

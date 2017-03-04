@@ -20,6 +20,12 @@ namespace Wilson_oficial.Pages
                 Title = "Search"
                 //TODO Add icon
             });
-		}
+
+            Children.Add(new CategoriesPage()
+            {
+                Title = "Categories"
+                //TODO Add icon
+            });
+        }
 	}
 }

@@ -33,9 +33,10 @@ namespace Wilson_oficial.Pages
 
         public void ShowWordSection(Word item)
         {
+            var title = PCLHelper.ReadAllTextAsync("dict.txt").Result;
             var text = new Label()
             {
-                Text = item.Name,
+                Text = title,
                 FontSize = 18
             };
 
@@ -55,6 +56,10 @@ namespace Wilson_oficial.Pages
 
             var item = e.Item as Word;
 
+            //Testing how PCL works now:
+            var file = PCLHelper.CreateFile("dict.txt").Result;
+            var boola = PCLHelper.WriteTextAllAsync(file.Name, "wilson eh safadao").Result;
+
             ShowWordSection(item);
 
             Application.Current.Properties["a"] = item.Name; //Add searched word into Properties
@@ -62,7 +67,8 @@ namespace Wilson_oficial.Pages
             //TODO see the best way to use it
 
             //TODO save searched word http://stackoverflow.com/questions/31655327/how-can-i-save-some-user-data-locally-on-my-xamarin-forms-app
-            //Add 
+            
+            
         }
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)

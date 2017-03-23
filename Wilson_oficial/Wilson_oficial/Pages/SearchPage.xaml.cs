@@ -23,7 +23,9 @@ namespace Wilson_oficial.Pages
             //_words = new List<Word>();
             //_words.Add(new Word { Name = "NHS", Definition = "British health system" });
             //_words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
-            _words = ReadDictFiles.readAndBuildDictionary();
+            ApolloDictionary app = new ApolloDictionary();
+            app.List = ReadDictFiles.readAndBuildDictionary();
+            _words = app.List;
 
 
             search_field.TextChanged += Search_field_TextChanged;

@@ -9,5 +9,7 @@ namespace Wilson_oficial
         public string Name { get; set; }
 
         public string Definition { get; set; }
+
+        public string Category { get; set; }
     }
 }

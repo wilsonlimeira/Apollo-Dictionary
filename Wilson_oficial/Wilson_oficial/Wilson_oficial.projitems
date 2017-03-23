@@ -28,9 +28,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PCLHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReadDictFiles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Word.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Dictionaries\Test.txt" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

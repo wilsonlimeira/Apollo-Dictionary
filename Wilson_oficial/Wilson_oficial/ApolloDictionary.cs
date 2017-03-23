@@ -41,6 +41,18 @@ namespace Wilson_oficial
             }
         }
 
+        public List<WordDefinition> getDefinitionsByName(string name)
+        {
+            List<WordDefinition> def = null;
+
+            if (this.database.ContainsKey(name))
+            {
+                def = this.database[name];
+            }
+
+            return def;
+        }
+
         public WordDefinition AddSingleWord
         {
             set

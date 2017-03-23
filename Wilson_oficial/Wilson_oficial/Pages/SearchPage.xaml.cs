@@ -13,6 +13,7 @@ namespace Wilson_oficial.Pages
 {
 	public partial class SearchPage : ContentPage
 	{
+        ApolloDictionary app;
         private List<WordDefinition> _words;
         private IFile file;
 
@@ -23,7 +24,7 @@ namespace Wilson_oficial.Pages
             //_words = new List<Word>();
             //_words.Add(new Word { Name = "NHS", Definition = "British health system" });
             //_words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
-            ApolloDictionary app = new ApolloDictionary();
+            app = new ApolloDictionary();
             app.List = ReadDictFiles.readAndBuildDictionary();
             _words = app.List;
 
@@ -60,8 +61,30 @@ namespace Wilson_oficial.Pages
             //TODO IMPLEMENT HERE
         }
 
-        private async void List_words_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void List_words_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //showing an alert with the definition
+            var clickedItem = e.Item as WordDefinition;
+            var wordDef = app.getDefinitionsByName(clickedItem.Name);
+
+            //in case of more than one definition, a text format will be made
+            if(wordDef.Count > 1)
+            {
+                string defText = textFormat(wordDef);
+
+                DisplayAlert(wordDef.First().Name, defText, "OK");
+            }
+            else
+            {
+                WordDefinition def = wordDef.First();
+                DisplayAlert(def.Name, def.Definition, "OK");
+            }
+            //DisplayAlert(item.Name, item.Definition, "OK");
+
+            //unmarking item
+            ((ListView)sender).SelectedItem = null;
+
+            /*
             list_words.IsVisible = false; //hide the list of the View
 
             var item = e.Item as WordDefinition;
@@ -76,8 +99,26 @@ namespace Wilson_oficial.Pages
             //TODO see the best way to use it
 
             //TODO save searched word http://stackoverflow.com/questions/31655327/how-can-i-save-some-user-data-locally-on-my-xamarin-forms-app
-            
-            
+            */
+
+        }
+
+        private static string textFormat(List<WordDefinition> wordDef)
+        {
+            string defText = "";
+            int i = 1;
+
+            foreach (WordDefinition def in wordDef)
+            {
+                //case the definition is already written there, to avoid duplicates
+                if (!defText.ToLower().Contains(def.Definition.ToLower()))
+                {
+                    defText = defText + i + ") " + def.Definition + System.Environment.NewLine + System.Environment.NewLine;
+                    i++;
+                }
+            }
+
+            return defText;
         }
 
         public async Task CreateRealFileAsync()

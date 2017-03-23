@@ -20,11 +20,12 @@ namespace Wilson_oficial.Pages
 		{
 			InitializeComponent ();
 
-            _words = new List<Word>();
-            _words.Add(new Word { Name = "NHS", Definition = "British health system" });
-            _words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
+            //_words = new List<Word>();
+            //_words.Add(new Word { Name = "NHS", Definition = "British health system" });
+            //_words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
+            _words = ReadDictFiles.readAndBuildDictionary();
 
-           
+
             search_field.TextChanged += Search_field_TextChanged;
             
 
@@ -38,8 +39,8 @@ namespace Wilson_oficial.Pages
         public void ShowWordSection(Word item)
         {
             //WORKING var textFromFile = await file.ReadAllTextAsync();
-
-            var textFromFile = ReadDictFiles.read();
+            ReadDictFiles.readAndBuildDictionary();
+            var textFromFile = "DELETAR";
 
             var text = new Label()
             {

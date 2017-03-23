@@ -32,7 +32,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Word.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Dictionaries\Test.txt" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -53,5 +52,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\HistoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Dictionaries\Governor_Dictionary.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Dictionaries\nhs-acronym-dictionary.txt" />
   </ItemGroup>
 </Project>

@@ -1,3 +1,4 @@
+Acronyms
 A&E -> accident & emergency
 A4C/AFC -> Agenda fofcr Change
 AAC -> Advisory Appointments Committee
@@ -47,7 +48,7 @@ CFAs -> clinical focus areas
 CFH -> (NHS) Connecting for Health
 CHCs -> Community Health Councils
 CHD -> coronary heart disease
-CHIQ -> Centre for Health Information Quality
+CHIQ -> Centre for Health Information Quality
 CHMS -> community health and miscellaneous services
 CHPO -> Chief Health Professions Officer
 CIMP -> clinical information management programme
@@ -78,8 +79,7 @@ DPR -> Data Protection Register
 DSU -> day surgery unit
 DTC -> diagnosis and treatment centre
 DToC -> delayed transfers of care
-EBITDA -> earnings before interest, taxes, depreciation
-and -> amortisation
+EBITDA -> earnings before interest, taxes, depreciation and amortisation
 EBS -> emergency bed service
 ED -> Emergency Department
 EHR -> electronic health record
@@ -92,8 +92,7 @@ ERS -> Electronic reform service
 ESR -> electronic staff record
 EHIC -> European Health Insurance Card
 FCE -> finished consultant episode
-FESC -> Framework for procuring External Support
-for -> Commissioners
+FESC -> Framework for procuring External Support for Commissioners
 FHS -> family health services
 FOI -> freedom of information
 FRR -> Financial Risk Rating
@@ -102,7 +101,7 @@ FTE -> Full time equivalent
 FTGA -> Foundation Trust Governors’ Association
 FTN -> Foundation Trust Network
 GDC -> General Dental Council
-GI -> Gastrointestinal
+GI -> Gastrointestinal
 GMC -> General Medical Council
 GMS -> General Medical Services
 GP -> General Practitioner
@@ -152,7 +151,7 @@ MMR -> measles, mumps, rubella
 KF -> Key finding
 KSF -> Knowledge and Skills Framework
 KPIs -> key performance indicators
-MRC -> Medical Research Council
+MRC -> Medical Research Council
 MRI -> magnetic resonance imaging
 MRSA -> methicillin-resistant Staphylococcus aureus
 MTS -> (NHS) management training scheme
@@ -161,8 +160,7 @@ NBAP -> National Booked Admissions Programme
 NBV -> Net Book Value
 NCAS -> National Clinical Assessment Service
 NCB -> National Commissioning Board
-NCEPOD -> National Confidential Enquiry into Patient
-Outcome -> and Death
+NCEPOD -> National Confidential Enquiry into Patient Outcome and Death
 NCG -> National Commissioning Group
 NCI -> National Centre for Involvement
 NCVO -> National Council for Voluntary Organisations
@@ -172,8 +170,7 @@ NHS -> National Health Service
 NHS -> LIFT NHS Local Improvement Finance Trust
 NHSLA -> National Health Service Litigation Authority
 NICE -> National Institute for Health and Clinical Excellence
-NIGB -> National Information Governance Board for Health
-and -> Social Care
+NIGB -> National Information Governance Board for Health and Social Care
 NIMHE -> National Institute for Mental Health in England
 NPfIT -> National Programme for IT
 NPSA -> National Patient Safety Agency
@@ -209,7 +206,7 @@ PPIF -> Patient and Public Involvement Forum
 PPO -> preferred provider organisation
 PPP -> public-private partnership
 PRB -> Pay Review Body
-PROMs -> patient-reported outcome measures
+PROMs -> patient-reported outcome measures
 PRP -> policy research programme
 PSA -> public service agreement
 QA -> quality assurance
@@ -227,15 +224,15 @@ SMAC -> Standing Medical Advisory Committee
 SpR -> specialist registrar
 TIA -> Transient Ischaemic Attack
 TMB -> Trust Management Board
-TUPE -> Transfer of Undertakings (Protection of
-Employment -> Regulations 1981)
+TUPE -> Transfer of Undertakings (Protection of Employment Regulations 1981)
 VAT -> Value Added Tax
 VRE -> vancomycin-resistant enterocci
 WCC -> World Class Commissioning
 WTE -> Whole Time Equivalent
 WTD -> working-time directive
 YTD -> Year to Date
-YTD -> Year to Date Dictionary
+
+Dictionary
 Accident & Emergency -> hospital department that assesses and treats people with serious injuries and those in need of emergency treatment (NHS is now changing these to Emergency Departments)
 Acute -> describes a disease of rapid onset, severe symptoms and brief duration
 Acute care -> specific care for diseases or illness that progress quickly, feature severe symptoms and have a brief duration
@@ -253,7 +250,7 @@ Caldicott Guardians -> senior staff in the NHS and social services appointed to 
 Care services -> services that ensure the well-being of the most vulnerable people in society
 Care trusts -> organisations working in both health and social care offering either social care, mental health services or primary care services
 Chief Health Professions Officer (CHPO) -> the government’s most senior allied health professions advisor
-Chief Medical Officer (CMO) -> the government’s principal medical adviser and the professional head of all medical staff in England
+Chief Medical Officer (CMO) -> the government’s principal medical adviser and the professional head of all medical staff in England
 Chief Nursing Officer (CNO) -> responsible for delivering the Government’s strategy for nursing, and leading all England’s nurses, midwives, health visitors and allied health professionals
 Chief Pharmaceutical Officer (CPO) -> the professional lead within the Department of Health on carrying out the government’s Pharmacy in the Future programme
 Chief Scientific Officer (CSO) -> responsible for building the capacity and development of the healthcare science workforce
@@ -271,7 +268,7 @@ Cost per case -> a cost-per-case agreement occurs where the commissioning author
 Critical care -> an integrated service for critically ill patients when they are in the health system
 Direct Payments -> payments given to individuals to choose, organise and pay for the social care services they need, rather than using the services offered by their local authority
 Electronic Patient Records (EPR) -> a catch-all term covering patient data held in digital form
-European Health Insurance Card (EHIC) -> card that entitles Europeans to free or reduced cost medical treatment in a European economic area
+European Health Insurance Card (EHIC) -> card that entitles Europeans to free or reduced cost medical treatment in a European economic area
 Expert patient -> patients who become experts at managing their conditions on a day to-day-basis
 Expert Patient Programme -> programme designed to teach good self-care and self-management skills to people with long-term conditions
 Foundation trust -> NHS hospitals that are run as independent, public benefit corporations, which are both controlled and run locally
@@ -294,20 +291,19 @@ Local Involvement Networks (LINks) -> individuals and groups from across the com
 Local Public Service Agreement (LPSA) -> an agreement between a local authority and government to improve services in return for extra funding
 Local Service Providers -> responsible for working with the local NHS to deliver the National Programme for IT systems and services at a local level
 Mental health trusts -> trusts that provide specialist mental health services in hospitals and local communities
-Monitor -> the independent regulator of NHS foundation trusts that is responsible for authorising, monitoring and regulating them National Information Governance Board for Health
-and Social Care (NIGB) -> provides leadership and promotes consistent standards for information on governance acrosshealth and social care. It arbitrates on the interpretation and application of information governance policy and gives advice on matters at national level
+Monitor -> the independent regulator of NHS foundation trusts that is responsible for authorising, monitoring and regulating them
+National Information Governance Board for Health and Social Care (NIGB) -> provides leadership and promotes consistent standards for information on governance acrosshealth and social care. It arbitrates on the interpretation and application of information governance policy and gives advice on matters at national level
 National Service Framework (NSFs) -> long-term strategies for improving specific areas of care. There are a range of NSFs, which establish a set of minimum national standards of clinical quality and access to services in a series of major care areas and disease groups, including mental health, diabetes, older people, and coronary heart disease. The aim is to drive up performance and decrease geographical variations
 National Quality Board -> a key aspect of the work to deliver the goal of high-quality care for patients. The aim of the board will be to bring together all those with an interest in improving quality, to align and agree the NHS quality goals, while respecting the independent status of participating organisations. The board’s members will have a range of skills and expertise and will include representatives from some of the national statutory and professional bodies that are responsible for the quality of health and social care
 National tariff -> linked to the Payment by Results policy, the national tariff is a centrally agreed list of prices for particular procedures. The provider of those treatments is paid a fixed amount for each patient undergoing the procedure
-Needs assessment -> process by which NHS organisations or local authorities use information to judge the health and wellbeing of their population and then decide what services should be provided to meet local needs
+Needs assessment -> process by which NHS organisations or local authorities use information to judge the health and wellbeing of their population and then decide what services should be provided to meet local needs
 NHS Code of Practice -> sets out the basic principles underlying public access to information about the NHS. It reflects the government’s intention to ensure greater accessby the public to information about public services and complements the Code of Access to Information, which applies to the Department of Health
 NHS Confederation -> an independent membership body that represents NHS organisations as well as some independent health care providers. The NHS Confederation host the Foundation Trust Network (FTN)
 NHS Constitution -> establishes the principles and values of the NHS in England. It sets out rights to which patients, public and staff are entitled, and pledges which the NHS is committed to achieve, together with responsibilities which the public, patients and staff owe to one another to ensure that the NHS operates fairly and effectively. All NHS bodies and private and third sector providers supplying NHS services will be required by law to take account of this Constitution in their decisions and actions
-NHS Improvement Plan -> a government plan that sets objectives for the NHS and related agencies NHS Local Improvement FinanceTrust (NHS LIFT) - builds and refurbishes primary care premises that it owns. It rents accommodation to GPs on a lease basis, as well as to other parties such as chemists, opticians and dentists NICE (National Institute for Health and Clinical
-Excellence) -> body set up as National institute for Clinical Excellence in April 1999 (renamed in April 2005) to decide which health treatments and technologies -
-from drugs to artificial hips -> should be available on the NHS. An independent organisation that provides national guidance on the promotion of good health and the prevention and treatment of ill-health
-Non-executive directors (NEDs) for NHS trusts -> lay people appointed by the Appointments Commission who sit on the board of NHS trusts and primary care trusts with the executive directors, overseeing the work of the organisation. Non-executive directors (NEDs) for foundation
-trusts -> lay people appointed by governors. Governors are responsible for appointing, appraising and removing the NEDs. The chair of the trust will be a NED
+NHS Improvement Plan -> a government plan that sets objectives for the NHS and related agencies NHS Local Improvement FinanceTrust (NHS LIFT) - builds and refurbishes primary care premises that it owns. It rents accommodation to GPs on a lease basis, as well as to other parties such as chemists, opticians and dentists
+NICE (National Institute for Health and Clinical Excellence) -> body set up as National institute for Clinical Excellence in April 1999 (renamed in April 2005) to decide which health treatments and technologies - from drugs to artificial hips - should be available on the NHS. An independent organisation that provides national guidance on the promotion of good health and the prevention and treatment of ill-health
+Non-executive directors (NEDs) for NHS trusts -> lay people appointed by the Appointments Commission who sit on the board of NHS trusts and primary care trusts with the executive directors, overseeing the work of the organisation.
+Non-executive directors (NEDs) for foundation trusts -> lay people appointed by governors. Governors are responsible for appointing, appraising and removing the NEDs. The chair of the trust will be a NED
 Operating Framework -> the guidance produced each year by the Department of Health which outlines national priorities for the NHS
 Our NHS, Our Future -> a wide-ranging review of the NHS launched in 2007 and led by the health minister Lord Darzi
 Outbreak plans -> plans developed to combat possible outbreaks of communicable diseases, including outbreaks caused by the deliberate release of biological agents

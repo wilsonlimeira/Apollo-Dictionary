@@ -7,7 +7,7 @@ BMA -> British Medical Association - The independent trade union and professiona
 BME -> Black and Minority Ethnic Groups
 BEN -> Birmingham East and North Primary Care Trust
 CAHMS -> Child and Adolescent Mental Health Services
-CEO -> Chief Executive Officer
+CEO -> Chief Executive Officer
 CG -> Clinical Governance - A framework through which NHS organisations are accountable for continuously improving the quality of their services and safeguarding high standards of care..
 CMHT -> Community Mental Health Team - Made up of professionals and support staff who provide specialist mental health services to people within the community.
 CQC -> Care Quality Commission - The independent regulator of health and social care in England.
@@ -21,7 +21,7 @@ EIS -> Early Intervention Service - Provides assessment and care for people expe
 FRR -> Financial Reporting Requirements
 FTFF -> Foundation Trust Financing Facility
 FTN -> Foundation Trust Network – Works to raise the profile of issues facing authorised and applicant Foundation Trusts.
-FYE -> Fiscal Year End - The end of a 12-month accounting period.
+FYE -> Fiscal Year End - The end of a 12-month accounting period.
 GP -> General Medical Practitioner
 HDU -> High Dependency Unit - a unit in a hospital that offers specialist nursing care and monitoring to seriously ill patients. It provides greater care than is available on general wards but less than is given to patients in intensive care.
 HOB -> Heart of Birmingham Primary Care Trust
@@ -42,7 +42,7 @@ PALS -> Patient Advice and Liaison Service – 24 hours a day customer care line
 PCT -> Primary Care Trust - provides some primary and community services or commission them from other providers, and are involved in commissioning secondary care.
 PICU -> Psychiatric Intensive Care Unit – a type of psychiatric in-patient ward. These wards are always locked (i.e. entry and exit is controlled by the nursing staff) and staffing levels are higher than on a normal acute admission ward.
 PIAG -> Patient Information Advisory Group
-PMIB -> Performance Management & Innovation Board
+PMIB -> Performance Management & Innovation Board
 PPI -> Patient and Public Involvement
 QUIP -> Quality, Innovation & Productivity
 RAID -> Rapid Assessment Interface and Discharge Service – A specialist team that work closely with doctors and nurses at the A&E of City Hospital and the charity Aquarius to provide a 24-hour service, ensuring that those patients with mental health, alcohol or drugs problems are assessed and treated much earlier.
@@ -52,4 +52,4 @@ STR -> Support Time and Recovery Worker
 SUI -> Serious Untoward Incident
 WADS -> Working Age Dementia Service
 YASCC -> Youth, Addictions and Secure and Complex Care division – Mental health services for young people, those with drug and alcohol related conditions and those in forensic services.
-YTD -> Year to Date - The period beginning at the start of the calendar year up to the current date.
+YTD -> Year to Date - The period beginning at the start of the calendar year up to the current date.

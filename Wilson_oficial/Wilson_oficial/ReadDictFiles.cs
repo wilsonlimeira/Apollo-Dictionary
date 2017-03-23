@@ -9,7 +9,7 @@ namespace Wilson_oficial
     class ReadDictFiles
     {
         
-        public static List<Word> readAndBuildDictionary()
+        public static List<WordDefinition> readAndBuildDictionary()
         {
             string resourcePrefix = null;
 
@@ -25,18 +25,18 @@ namespace Wilson_oficial
             Stream stream2 = assembly.GetManifestResourceStream(resourcePrefix + "Dictionaries.nhs-acronym-dictionary.txt");
 
             //read each file from Stream and make it into usable data
-            var dictionary = new List<Word>();
+            var dictionary = new List<WordDefinition>();
             dictionary.AddRange(processWords(stream1));
             dictionary.AddRange(processWords(stream2));
 
             return dictionary;
         }
 
-        private static List<Word> processWords(Stream stream)
+        private static List<WordDefinition> processWords(Stream stream)
         {
             var reader = new System.IO.StreamReader(stream);
 
-            List<Word> dict = new List<Word>();
+            List<WordDefinition> dict = new List<WordDefinition>();
 
             string line;
             while((line = reader.ReadLine()) != null)
@@ -50,7 +50,7 @@ namespace Wilson_oficial
                     string definition = splitLine[1];
 
                     //add to the Dictionary
-                    dict.Add(new Word { Name = name, Definition = definition });
+                    dict.Add(new WordDefinition { Name = name, Definition = definition });
                 }
             }
 

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Wilson_oficial
 {
-    public class Word
+    public class WordDefinition
     {
-        public string Name { get; set; }
+        public string Name { get; set; } //it's duplicated here to be used to display on screen only
 
         public string Definition { get; set; }
 

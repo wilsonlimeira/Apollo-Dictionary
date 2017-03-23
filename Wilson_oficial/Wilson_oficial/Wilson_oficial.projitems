@@ -29,7 +29,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PCLHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadDictFiles.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Word.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WordDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">

@@ -13,7 +13,7 @@ namespace Wilson_oficial.Pages
 {
 	public partial class SearchPage : ContentPage
 	{
-        private List<Word> _words;
+        private List<WordDefinition> _words;
         private IFile file;
 
 		public SearchPage ()
@@ -38,7 +38,7 @@ namespace Wilson_oficial.Pages
             list_words.ItemTapped += List_words_ItemTapped;
         }
 
-        public void ShowWordSection(Word item)
+        public void ShowWordSection(WordDefinition item)
         {
             //WORKING var textFromFile = await file.ReadAllTextAsync();
             ReadDictFiles.readAndBuildDictionary();
@@ -64,7 +64,7 @@ namespace Wilson_oficial.Pages
         {
             list_words.IsVisible = false; //hide the list of the View
 
-            var item = e.Item as Word;
+            var item = e.Item as WordDefinition;
 
             //Testing how PCL works now:
             await CreateRealFileAsync();
@@ -101,10 +101,10 @@ namespace Wilson_oficial.Pages
             list_words.ItemsSource = Listing(search_field.Text);
         }
 
-        public IEnumerable<GroupingList<char, Word>> Listing(string filter = "")
+        public IEnumerable<GroupingList<char, WordDefinition>> Listing(string filter = "")
         {
             //TODO ajeitar o erro da busca OU buscar somente quando clicarem busca
-            IEnumerable<Word> filtered_words = _words;
+            IEnumerable<WordDefinition> filtered_words = _words;
 
             if(!string.IsNullOrEmpty(filter))
                 filtered_words = _words.Where(l => l.Name.ToLower().Contains(filter.ToLower()));
@@ -112,7 +112,7 @@ namespace Wilson_oficial.Pages
             return from word in filtered_words
                    orderby word.Name
                    group word by word.Name[0] into groups
-                   select new GroupingList<char, Word>(groups.Key, groups);
+                   select new GroupingList<char, WordDefinition>(groups.Key, groups);
         }
     }
 }

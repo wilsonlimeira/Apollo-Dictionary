@@ -6,18 +6,18 @@ namespace Wilson_oficial
 {
     class ApolloDictionary
     {
-        private Dictionary<string, List<Word>> database = new Dictionary<string, List<Word>>();
+        private Dictionary<string, List<WordDefinition>> database = new Dictionary<string, List<WordDefinition>>();
 
-        public List<Word> List
+        public List<WordDefinition> List
         {
             //return the dictionary as List of Words to make possible to exhibit the list on the screen 
             get
             {
-                List<Word> dict = new List<Word>();
+                List<WordDefinition> dict = new List<WordDefinition>();
 
                 foreach(string name in this.database.Keys)
                 {
-                    dict.Add(new Word { Name = name });
+                    dict.Add(new WordDefinition { Name = name });
                 }
 
                 return dict;
@@ -25,31 +25,31 @@ namespace Wilson_oficial
 
             set
             {
-                foreach (Word word in value)
+                foreach (WordDefinition definition in value)
                 {
-                    //if the Word is already there, so add a new "Definition" (defined as Word class) to the Name
-                    if(this.database.ContainsKey(word.Name))
+                    //if the Word is already there, so add a new Definition to the Name
+                    if(this.database.ContainsKey(definition.Name))
                     {
-                        this.database[word.Name].Add(word);
+                        this.database[definition.Name].Add(definition);
                     }
                     else
                     {
-                        database.Add(word.Name, new List<Word>() { word });
+                        database.Add(definition.Name, new List<WordDefinition>() { definition });
                     }
                     
                 }
             }
         }
 
-        public Word AddSingleWord
+        public WordDefinition AddSingleWord
         {
             set
             {
-                database.Add(value.Name, new List<Word>() { value });
+                database.Add(value.Name, new List<WordDefinition>() { value });
             }
         }
 
-        public Dictionary<string, List<Word>> AddDictionary
+        public Dictionary<string, List<WordDefinition>> AddDictionary
         {
             set
             {

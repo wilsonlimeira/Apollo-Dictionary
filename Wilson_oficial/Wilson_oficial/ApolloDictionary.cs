@@ -17,7 +17,9 @@ namespace Wilson_oficial
 
                 foreach(string name in this.database.Keys)
                 {
-                    dict.Add(new WordDefinition { Name = name });
+                    string category = getDefinitionsByName(name)[0].Category;
+
+                    dict.Add(new WordDefinition { Name = name, Category = category });
                 }
 
                 return dict;

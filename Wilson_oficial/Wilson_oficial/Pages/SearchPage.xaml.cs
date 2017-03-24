@@ -28,16 +28,25 @@ namespace Wilson_oficial.Pages
             app.List = ReadDictFiles.readAndBuildDictionary();
             _words = app.List;
 
+            //TODO: Em um futuro distante, fazer a busca funcionar ao modificar o texto
+            //search_field.TextChanged += Search_field_TextChanged;
 
+            //Search when press the Search button
+            search_field.SearchButtonPressed += Search_field_SearchButtonPressed;
+
+            //When the person clicks to cancel the search or erase the word
             search_field.TextChanged += Search_field_TextChanged;
-            
 
             //Add the list to the XAML
             list_words.ItemsSource = Listing();
 
             //Click on the item
             list_words.ItemTapped += List_words_ItemTapped;
+
+            
+            
         }
+
 
         public void ShowWordSection(WordDefinition item)
         {
@@ -137,9 +146,18 @@ namespace Wilson_oficial.Pages
             //await file.WriteAllTextAsync("Sample Text...");
         }
 
-        private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
+        private void Search_field_SearchButtonPressed(object sender, EventArgs e)
         {
             list_words.ItemsSource = Listing(search_field.Text);
+        }
+
+        private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                list_words.ItemsSource = Listing();
+            }
+            //list_words.ItemsSource = Listing(e.NewTextValue);
         }
 
         public IEnumerable<GroupingList<char, WordDefinition>> Listing(string filter = "")

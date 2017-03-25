@@ -17,28 +17,54 @@ namespace Wilson_oficial.Pages
         private List<WordDefinition> _words;
         private IFile file;
 
-		public SearchPage ()
+        //Layout parameters
+        ListView list_words;
+        SearchBar search_field;
+        StackLayout layout;
+
+        public SearchPage ()
 		{
 			InitializeComponent ();
 
-            //_words = new List<Word>();
-            //_words.Add(new Word { Name = "NHS", Definition = "British health system" });
-            //_words.Add(new Word { Name = "Heart Attack", Definition = "Heart disease"});
             app = new ApolloDictionary();
             app.List = ReadDictFiles.readAndBuildDictionary();
             _words = app.List;
 
-            //TODO: Em um futuro distante, fazer a busca funcionar ao modificar o texto
-            //search_field.TextChanged += Search_field_TextChanged;
+            //Creating ListView
+            list_words = new ListView
+            {
+                ItemTemplate = new DataTemplate(typeof(TextCell))
+                {
+                    Bindings = {
+                            { TextCell.TextProperty, new Binding ("Name") }
+                        }
+                },
+
+                GroupDisplayBinding = new Binding("Key"),
+                GroupShortNameBinding = new Binding("Key"),
+                IsGroupingEnabled = true,
+                ItemsSource = Listing(),
+            };
+
+            //Creating SearchBar
+            search_field = new SearchBar
+            {
+                Placeholder = "Search here..."
+            };
+
+            //Adding items to Content
+            layout = new StackLayout
+            {
+                Padding = new Thickness(5, 5, 5, 5),
+                Children = { search_field, list_words }
+            };
+            Content = layout;
 
             //Search when press the Search button
             search_field.SearchButtonPressed += Search_field_SearchButtonPressed;
 
             //When the person clicks to cancel the search or erase the word
             search_field.TextChanged += Search_field_TextChanged;
-
-            //Add the list to the XAML
-            list_words.ItemsSource = Listing();
 
             //Click on the item
             list_words.ItemTapped += List_words_ItemTapped;
@@ -153,16 +179,13 @@ namespace Wilson_oficial.Pages
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.NewTextValue))
-            {
-                list_words.ItemsSource = Listing();
-            }
-            //list_words.ItemsSource = Listing(e.NewTextValue);
+            layout.Children.Remove(list_words);
+            list_words.ItemsSource = Listing(e.NewTextValue);
+            layout.Children.Add(list_words);
         }
 
         public IEnumerable<GroupingList<char, WordDefinition>> Listing(string filter = "")
         {
-            //TODO ajeitar o erro da busca OU buscar somente quando clicarem busca
             IEnumerable<WordDefinition> filtered_words = _words;
 
             if(!string.IsNullOrEmpty(filter))

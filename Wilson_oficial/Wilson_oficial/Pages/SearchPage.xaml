@@ -4,19 +4,5 @@
              x:Class="Wilson_oficial.Pages.SearchPage">
 	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
 
-    <StackLayout Padding ="5,5,5,5">
-        <SearchBar x:Name="search_field" Placeholder="Search here..."></SearchBar>
-        
-        <ListView x:Name="list_words"
-                  IsGroupingEnabled="True"
-                  GroupDisplayBinding="{Binding Key}"
-                  GroupShortNameBinding="{Binding Key}">
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+    
 </ContentPage>

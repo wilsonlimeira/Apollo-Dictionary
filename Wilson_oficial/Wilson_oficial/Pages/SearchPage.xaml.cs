@@ -119,6 +119,9 @@ namespace Wilson_oficial.Pages
             //unmarking item
             ((ListView)sender).SelectedItem = null;
 
+            //add the clicked item to history list
+            UserProperties.HistoryList.Add(clickedItem.Name);
+
             /*
             list_words.IsVisible = false; //hide the list of the View
 

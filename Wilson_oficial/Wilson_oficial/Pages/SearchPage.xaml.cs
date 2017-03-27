@@ -1,4 +1,5 @@
 ﻿using PCLStorage;
+using Rg.Plugins.Popup;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
 
 namespace Wilson_oficial.Pages
 {
@@ -21,6 +23,7 @@ namespace Wilson_oficial.Pages
         ListView list_words;
         SearchBar search_field;
         StackLayout layout;
+        Button addNewItemButton;
 
         public SearchPage ()
 		{
@@ -46,17 +49,34 @@ namespace Wilson_oficial.Pages
                 ItemsSource = Listing(),
             };
 
+            //Add New Item Button
+            addNewItemButton = new Button
+            {
+                Text = "Add New Word",
+            };
+
             //Creating SearchBar
             search_field = new SearchBar
             {
-                Placeholder = "Search here..."
+                Placeholder = "Search here...",
+                WidthRequest = 225 //TODO: tentar mudar esse valor para ficar ajustavel a tela
             };
 
             //Adding items to Content
             layout = new StackLayout
             {
-                Padding = new Thickness(5, 5, 5, 5),
-                Children = { search_field, list_words }
+                Margin = new Thickness(0, 5, 0, 0),
+                Spacing = 5,
+
+                Children =
+                {
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        Children = { search_field, addNewItemButton }
+                    },
+                    list_words
+                }
             };
             Content = layout;
 
@@ -69,10 +89,18 @@ namespace Wilson_oficial.Pages
             //Click on the item
             list_words.ItemTapped += List_words_ItemTapped;
 
-            
+            //Click on Add New Item Button
+            addNewItemButton.Clicked += AddNewItemButton_Clicked;
             
         }
 
+        private async void AddNewItemButton_Clicked(object sender, EventArgs e)
+        {
+            //var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
+            var page = new MyPopupPage();
+
+            await Navigation.PushModalAsync(page);
+        }
 
         public void ShowWordSection(WordDefinition item)
         {

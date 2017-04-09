@@ -11,6 +11,8 @@ namespace Wilson_oficial.Pages
 {
 	public partial class MyPopupPage : PopupPage
 	{
+        ApolloDictionary app;
+
         StackLayout layout;
         Entry typedWord, typedDefinition, typedCategory;
         Button addItemButton;
@@ -19,6 +21,8 @@ namespace Wilson_oficial.Pages
         public MyPopupPage ()
 		{
 			InitializeComponent ();
+
+            app = new ApolloDictionary();
 
             //Layout
             typedWord = new Entry { Placeholder = "New word" };
@@ -39,7 +43,20 @@ namespace Wilson_oficial.Pages
             };
 
             Content = layout;
+
+            addItemButton.Clicked += AddItemButton_Clicked;
 		}
+
+        private void AddItemButton_Clicked(object sender, EventArgs e)
+        {
+            //add a new word to the database
+            app.AddSingleWord = new WordDefinition
+            {
+                Name = typedWord.Text,
+                Definition = typedDefinition.Text,
+                Category = typedCategory.Text
+            };
+        }
 
         protected override void OnAppearing()
         {

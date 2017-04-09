@@ -28,8 +28,9 @@ namespace Wilson_oficial.Pages
         public SearchPage ()
 		{
 			InitializeComponent ();
-
+            
             app = new ApolloDictionary();
+            //dictionary is read from Storage for the first time
             app.List = ReadDictFiles.readAndBuildDictionary();
             _words = app.List;
 

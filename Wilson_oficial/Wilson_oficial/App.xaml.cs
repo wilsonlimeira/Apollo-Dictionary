@@ -15,6 +15,7 @@ namespace Wilson_oficial
 		{
 			InitializeComponent();
 
+            //initializing the History methods to get user stored words
             userProp = new UserProperties();
 
 			MainPage = new Wilson_oficial.Pages.HomePage();
@@ -23,12 +24,16 @@ namespace Wilson_oficial
 		protected override void OnStart ()
 		{
             // Handle when your app starts
+
+            //get list which is saved in the Storage
             userProp.ObtainList();
 		}
 
 		protected override void OnSleep ()
 		{
             // Handle when your app sleeps
+
+            //save list in the Storage
             userProp.SaveList();
 		}
 

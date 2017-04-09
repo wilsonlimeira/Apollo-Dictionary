@@ -25,7 +25,7 @@ namespace Wilson_oficial.Pages
 			InitializeComponent ();
 
             app = new ApolloDictionary();
-            app.List = ReadDictFiles.readAndBuildDictionary();
+            //app.List = ReadDictFiles.readAndBuildDictionary();
             _words = app.List;
 
             //Creating ListView
@@ -56,7 +56,8 @@ namespace Wilson_oficial.Pages
             //Adding items to Content
             layout = new StackLayout
             {
-                Padding = new Thickness(5, 5, 5, 5),
+                Margin = new Thickness(0, 5, 0, 0),
+                Spacing = 5,
                 Children = { search_field, list_words }
             };
             Content = layout;

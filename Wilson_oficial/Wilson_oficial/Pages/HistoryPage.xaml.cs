@@ -51,14 +51,14 @@ namespace Wilson_oficial.Pages
             {
                 string defText = textFormat(wordDef);
 
-                DisplayAlert(wordDef.First().Name, defText, "OK");
+                DisplayAlert(wordDef.First().Name, defText, "OK"); //show alert on screen
             }
             else
             {
                 WordDefinition def = wordDef.First();
-                DisplayAlert(def.Name, def.Definition, "OK");
+
+                DisplayAlert(def.Name, def.Definition, "OK"); //show alert on screen
             }
-            //DisplayAlert(item.Name, item.Definition, "OK");
 
             //unmarking item
             ((ListView)sender).SelectedItem = null;

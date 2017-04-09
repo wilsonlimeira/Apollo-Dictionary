@@ -6,7 +6,7 @@ namespace Wilson_oficial
 {
     class ApolloDictionary
     {
-        private Dictionary<string, List<WordDefinition>> database = new Dictionary<string, List<WordDefinition>>();
+        private static Dictionary<string, List<WordDefinition>> database = new Dictionary<string, List<WordDefinition>>();
 
         public List<WordDefinition> List
         {
@@ -15,7 +15,7 @@ namespace Wilson_oficial
             {
                 List<WordDefinition> dict = new List<WordDefinition>();
 
-                foreach(string name in this.database.Keys)
+                foreach(string name in database.Keys)
                 {
                     string category = getDefinitionsByName(name)[0].Category;
 
@@ -30,9 +30,9 @@ namespace Wilson_oficial
                 foreach (WordDefinition definition in value)
                 {
                     //if the Word is already there, so add a new Definition to the Name
-                    if(this.database.ContainsKey(definition.Name))
+                    if(database.ContainsKey(definition.Name))
                     {
-                        this.database[definition.Name].Add(definition);
+                        database[definition.Name].Add(definition);
                     }
                     else
                     {
@@ -47,9 +47,9 @@ namespace Wilson_oficial
         {
             List<WordDefinition> def = null;
 
-            if (this.database.ContainsKey(name))
+            if (database.ContainsKey(name))
             {
-                def = this.database[name];
+                def = database[name];
             }
 
             return def;
@@ -59,6 +59,8 @@ namespace Wilson_oficial
         {
             set
             {
+                //TODO: ADD this word to a file when adding it
+                //TODO: look for repeted words, avoid adding them
                 database.Add(value.Name, new List<WordDefinition>() { value });
             }
         }
@@ -67,7 +69,7 @@ namespace Wilson_oficial
         {
             set
             {
-                this.database = value;
+                database = value;
             }
         }
 

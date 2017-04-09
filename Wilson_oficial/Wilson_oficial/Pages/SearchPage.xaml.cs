@@ -38,15 +38,16 @@ namespace Wilson_oficial.Pages
             {
                 ItemTemplate = new DataTemplate(typeof(TextCell))
                 {
-                    Bindings = {
-                            { TextCell.TextProperty, new Binding ("Name") }
-                        }
+                    Bindings =
+                    {
+                        { TextCell.TextProperty, new Binding ("Name") }
+                    }
                 },
 
                 GroupDisplayBinding = new Binding("Key"),
                 GroupShortNameBinding = new Binding("Key"),
                 IsGroupingEnabled = true,
-                ItemsSource = Listing(),
+                ItemsSource = Listing()
             };
 
             //Add New Item Button

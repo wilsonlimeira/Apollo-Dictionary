@@ -12,6 +12,8 @@ namespace Wilson_oficial.Pages
 	{
         ApolloDictionary app;
         private List<WordDefinition> _words;
+        private bool isCategoriesOnScreen;
+        ListView categories = new ListView();
 
         //Layout parameters
         ListView list_words;
@@ -27,6 +29,9 @@ namespace Wilson_oficial.Pages
             _words = app.List;
 
             //Creating ListView
+            list_words = ShowListCategories();
+            isCategoriesOnScreen = true;
+            /*
             list_words = new ListView
             {
                 ItemTemplate = new DataTemplate(typeof(TextCell))
@@ -40,7 +45,7 @@ namespace Wilson_oficial.Pages
                 GroupShortNameBinding = new Binding("Key"),
                 IsGroupingEnabled = true,
                 ItemsSource = Listing(),
-            };
+            };*/
 
             //Creating SearchBar
             search_field = new SearchBar
@@ -66,7 +71,23 @@ namespace Wilson_oficial.Pages
             list_words.ItemTapped += List_words_ItemTapped;
 
             
+        }
+        
+        private ListView ShowListCategories()
+        {
             
+            SortedSet<string> catAux = new SortedSet<string>();
+
+            foreach(WordDefinition def in _words)
+            {
+                if(!catAux.Contains(def.Category))
+                {
+                    catAux.Add(def.Category);
+                }
+            }
+            categories.ItemsSource = catAux.ToList();
+
+            return categories;
         }
 
         private void Search_field_TextChanged(object sender, TextChangedEventArgs e)
@@ -85,6 +106,7 @@ namespace Wilson_oficial.Pages
         {
             IEnumerable<WordDefinition> filtered_words = _words;
 
+            //check if filter is not null or empty string
             if (!string.IsNullOrEmpty(filter))
                 filtered_words = _words.Where(l => l.Name.ToLower().Contains(filter.ToLower()));
 
@@ -94,25 +116,73 @@ namespace Wilson_oficial.Pages
                    select new GroupingList<string, WordDefinition>(groups.Key, groups);
         }
 
+        public IEnumerable<GroupingList<string, WordDefinition>> ListingByCategory(string filter = "")
+        {
+            IEnumerable<WordDefinition> filtered_words = _words;
+
+            //check if filter is not null or empty string
+            if (!string.IsNullOrEmpty(filter))
+                filtered_words = _words.Where(l => l.Category.ToLower().Contains(filter.ToLower())); //filter by Category
+
+            return from word in filtered_words
+                   orderby word.Category
+                   group word by word.Category into groups
+                   select new GroupingList<string, WordDefinition>(groups.Key, groups);
+        }
+
         private void List_words_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //showing an alert with the definition
-            var clickedItem = e.Item as WordDefinition;
-            var wordDef = app.getDefinitionsByName(clickedItem.Name);
 
-            //in case of more than one definition, a text format will be made
-            if (wordDef.Count > 1)
+            if (isCategoriesOnScreen)
             {
-                string defText = textFormat(wordDef);
+                var clickedItem = e.Item as string;
 
-                DisplayAlert(wordDef.First().Name, defText, "OK");
+                //remove list on the screen
+                layout.Children.Remove(list_words);
+
+                list_words = new ListView
+                {
+                    ItemTemplate = new DataTemplate(typeof(TextCell))
+                    {
+                        Bindings = {
+                            { TextCell.TextProperty, new Binding ("Name") }
+                        }
+                    },
+
+                    GroupDisplayBinding = new Binding("Key"),
+                    GroupShortNameBinding = new Binding("Key"),
+                    IsGroupingEnabled = true,
+                    ItemsSource = ListingByCategory(clickedItem), //Listing by Categories here
+                };
+
+                //add on screen after setup
+                layout.Children.Add(list_words);
+                //call this same method again, because now there is a new list on Screen, then a new method is required
+                list_words.ItemTapped += List_words_ItemTapped;
+                //prevent to get in this IF statement again
+                isCategoriesOnScreen = false;
             }
             else
             {
-                WordDefinition def = wordDef.First();
-                DisplayAlert(def.Name, def.Definition, "OK");
+                //showing an alert with the definition
+                var clickedItem = e.Item as WordDefinition;
+                var wordDef = app.getDefinitionsByName(clickedItem.Name);
+
+                //in case of more than one definition, a text format will be made
+                if (wordDef.Count > 1)
+                {
+                    string defText = textFormat(wordDef);
+
+                    DisplayAlert(wordDef.First().Name, defText, "OK");
+                }
+                else
+                {
+                    WordDefinition def = wordDef.First();
+                    DisplayAlert(def.Name, def.Definition, "OK");
+                }
+                //DisplayAlert(item.Name, item.Definition, "OK");
             }
-            //DisplayAlert(item.Name, item.Definition, "OK");
+
 
             //unmarking item
             ((ListView)sender).SelectedItem = null;
@@ -134,6 +204,22 @@ namespace Wilson_oficial.Pages
             }
 
             return defText;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            //if list is on the screen and back button was pressed, then put Categories on the screen
+            if(!isCategoriesOnScreen)
+            {
+                layout.Children.Remove(list_words);
+                list_words = ShowListCategories();
+                layout.Children.Add(list_words);
+                isCategoriesOnScreen = true;
+
+                return true;
+            }
+
+            return base.OnBackButtonPressed();
         }
     }
 }

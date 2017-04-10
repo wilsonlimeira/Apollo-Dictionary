@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PCLStorage;
+using System.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -9,7 +11,9 @@ namespace Wilson_oficial
 {
     class ReadDictFiles
     {
-        
+        private static IFile userFile;
+        private static List<WordDefinition> userList;
+
         public static List<WordDefinition> readAndBuildDictionary()
         {
             string resourcePrefix = null;
@@ -30,7 +34,53 @@ namespace Wilson_oficial
             dictionary.AddRange(processWords(stream1));
             dictionary.AddRange(processWords(stream2));
 
+            //get words from the personalized filesystem, which contains all the new words the user had added
+            var aux = ReadUserWordsFile();
+            dictionary.AddRange(userList);
+
             return dictionary;
+        }
+
+        private static async Task ReadUserWordsFile()
+        {
+            var readText = await userFile.ReadAllTextAsync();
+
+            //split the string into sequence of words
+            string[] separator = { Environment.NewLine };
+            string[] wordsAndDef = readText.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+            //take each word and split it into Name, Definition and Category
+            //from the file, which is in this model: word1 -> definition1 -> category1,category2,category3
+            string[] separator2 = { " -> " };
+            foreach (string wordDef in wordsAndDef)
+            {
+                string[] word = wordDef.Split(separator2, StringSplitOptions.RemoveEmptyEntries);
+
+                WordDefinition newWord = new WordDefinition
+                {
+                    Name = word[0],
+                    Definition = word[1],
+                    Category = word[2]
+                };
+
+                userList.Add(newWord);
+            }
+        }
+
+        private async Task CreateRealFileAsync()
+        {
+            // get hold of the file system
+            IFolder rootFolder = FileSystem.Current.LocalStorage;
+
+            // create a folder, if one does not exist already
+            IFolder folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
+
+            // create a file, overwriting any existing file
+            //IFile file = await folder.CreateFileAsync("MyFile.txt", CreationCollisionOption.ReplaceExisting);
+            userFile = await folder.GetFileAsync("MyWords.txt");
+
+            // populate the file with some text
+            //await file.WriteAllTextAsync("Sample Text...");
         }
 
         private static List<WordDefinition> processWords(Stream stream)

@@ -38,14 +38,14 @@ namespace Wilson_oficial
         public async static Task<IFolder> CreateFolder(this string folderName, IFolder rootFolder = null)
         {
             IFolder folder = rootFolder ?? FileSystem.Current.LocalStorage;
-            folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.ReplaceExisting);
+            folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
             return folder;
         }
 
         public async static Task<IFile> CreateFile(this string filename, IFolder rootFolder = null)
         {
             IFolder folder = rootFolder ?? FileSystem.Current.LocalStorage;
-            IFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+            IFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
             return file;
         }
         public async static Task<bool> WriteTextAllAsync(this string filename, string content = "", IFolder rootFolder = null)

@@ -50,12 +50,22 @@ namespace Wilson_oficial.Pages
         private void AddItemButton_Clicked(object sender, EventArgs e)
         {
             //add a new word to the database
-            app.AddSingleWord = new WordDefinition
+            try
             {
-                Name = typedWord.Text,
-                Definition = typedDefinition.Text,
-                Category = typedCategory.Text
-            };
+                app.AddSingleWord = new WordDefinition
+                {
+                    Name = typedWord.Text,
+                    Definition = typedDefinition.Text,
+                    Category = typedCategory.Text
+                };
+            }
+            catch (Exception except) //in case this word already exist
+            {
+                DisplayAlert("Sorry", except.Message, "OK");
+            }
+
+            OnBackButtonPressed();
+            
         }
 
         protected override void OnAppearing()

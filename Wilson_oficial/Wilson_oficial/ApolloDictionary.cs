@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PCLStorage;
+using System.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -59,9 +61,21 @@ namespace Wilson_oficial
         {
             set
             {
-                //TODO: ADD this word to a file when adding it
-                //TODO: look for repeted words, avoid adding them
-                database.Add(value.Name, new List<WordDefinition>() { value });
+                //look for repeted words, avoid adding them
+                if(!database.ContainsKey(value.Name))
+                {
+                    database.Add(value.Name, new List<WordDefinition>() { value });
+
+                    //writing in the file
+                    //model used: word1 -> definition1 -> category1,category2,category3
+                    PCLHelper.WriteTextAllAsync("MyDictionary.txt", value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine, App.folder);
+                    //App.userFile.WriteAllTextAsync(value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine);
+                }
+                else
+                {
+                    throw new Exception("This word is already in this dictionary");
+                }
+                
             }
         }
 

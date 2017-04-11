@@ -19,9 +19,7 @@ namespace Wilson_oficial.Pages
 		{
 			InitializeComponent ();
 
-            //TODO: Mudar esse esquema para ser GLOBAL
             app = new ApolloDictionary();
-            app.List = ReadDictFiles.readAndBuildDictionary();
 
             //Creating ListView
             historyList = new ListView();

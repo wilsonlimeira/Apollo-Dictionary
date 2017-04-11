@@ -11,7 +11,6 @@ namespace Wilson_oficial
 {
     class ReadDictFiles
     {
-        private static IFile userFile;
         private static List<WordDefinition> userList;
 
         public static List<WordDefinition> readAndBuildDictionary()
@@ -35,52 +34,45 @@ namespace Wilson_oficial
             dictionary.AddRange(processWords(stream2));
 
             //get words from the personalized filesystem, which contains all the new words the user had added
-            var aux = ReadUserWordsFile();
-            dictionary.AddRange(userList);
+            userList = new List<WordDefinition>();
+            var end = ReadUserWordsFile(dictionary);
 
+            while (!end.Result) ;
             return dictionary;
         }
 
-        private static async Task ReadUserWordsFile()
+        private static async Task<bool> ReadUserWordsFile(List<WordDefinition> dictionary)
         {
-            var readText = await userFile.ReadAllTextAsync();
-
-            //split the string into sequence of words
-            string[] separator = { Environment.NewLine };
-            string[] wordsAndDef = readText.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-
-            //take each word and split it into Name, Definition and Category
-            //from the file, which is in this model: word1 -> definition1 -> category1,category2,category3
-            string[] separator2 = { " -> " };
-            foreach (string wordDef in wordsAndDef)
+            var readText = await PCLHelper.ReadAllTextAsync("MyDictionary.txt", App.folder);
+            
+            if (!string.IsNullOrEmpty(readText))
             {
-                string[] word = wordDef.Split(separator2, StringSplitOptions.RemoveEmptyEntries);
+                //split the string into sequence of words
+                string[] separator = { Environment.NewLine };
+                string[] wordsAndDef = readText.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
-                WordDefinition newWord = new WordDefinition
+                //take each word and split it into Name, Definition and Category
+                //from the file, which is in this model: word1 -> definition1 -> category1,category2,category3
+                string[] separator2 = { " -> " };
+                foreach (string wordDef in wordsAndDef)
                 {
-                    Name = word[0],
-                    Definition = word[1],
-                    Category = word[2]
-                };
+                    string[] word = wordDef.Split(separator2, StringSplitOptions.RemoveEmptyEntries);
 
-                userList.Add(newWord);
+                    WordDefinition newWord = new WordDefinition
+                    {
+                        Name = word[0],
+                        Definition = word[1],
+                        Category = word[2]
+                    };
+
+                    userList.Add(newWord);
+                }
+
+                dictionary.AddRange(userList);
+                return true;
             }
-        }
 
-        private async Task CreateRealFileAsync()
-        {
-            // get hold of the file system
-            IFolder rootFolder = FileSystem.Current.LocalStorage;
-
-            // create a folder, if one does not exist already
-            IFolder folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
-
-            // create a file, overwriting any existing file
-            //IFile file = await folder.CreateFileAsync("MyFile.txt", CreationCollisionOption.ReplaceExisting);
-            userFile = await folder.GetFileAsync("MyWords.txt");
-
-            // populate the file with some text
-            //await file.WriteAllTextAsync("Sample Text...");
+            return false;
         }
 
         private static List<WordDefinition> processWords(Stream stream)

@@ -31,7 +31,7 @@ namespace Wilson_oficial.Pages
             
             app = new ApolloDictionary();
             //dictionary is read from Storage for the first time
-            app.List = ReadDictFiles.readAndBuildDictionary();
+            
             _words = app.List;
 
             //Creating ListView
@@ -102,28 +102,6 @@ namespace Wilson_oficial.Pages
             var page = new MyPopupPage();
 
             await Navigation.PushModalAsync(page);
-        }
-
-        public void ShowWordSection(WordDefinition item)
-        {
-            //WORKING var textFromFile = await file.ReadAllTextAsync();
-            ReadDictFiles.readAndBuildDictionary();
-            var textFromFile = "DELETAR";
-
-            var text = new Label()
-            {
-                Text = textFromFile,
-                FontSize = 18
-            };
-
-            Content = new StackLayout
-            {
-                Children =
-                {
-                    text
-                }
-            };
-            //TODO IMPLEMENT HERE
         }
 
         private void List_words_ItemTapped(object sender, ItemTappedEventArgs e)

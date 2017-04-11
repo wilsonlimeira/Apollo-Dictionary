@@ -16,7 +16,6 @@ namespace Wilson_oficial.Pages
 	public partial class SearchPage : ContentPage
 	{
         ApolloDictionary app;
-        private List<WordDefinition> _words;
         private IFile file;
 
         //Layout parameters
@@ -30,9 +29,6 @@ namespace Wilson_oficial.Pages
 			InitializeComponent ();
             
             app = new ApolloDictionary();
-            //dictionary is read from Storage for the first time
-            
-            _words = app.List;
 
             //Creating ListView
             list_words = new ListView
@@ -93,7 +89,21 @@ namespace Wilson_oficial.Pages
 
             //Click on Add New Item Button
             addNewItemButton.Clicked += AddNewItemButton_Clicked;
-            
+
+            //When a new word is added the list is refreshed
+            MessagingCenter.Subscribe<MyPopupPage>(this, "newWord", (sender) => {
+                layout.Children.Remove(list_words);
+                list_words.ItemsSource = Listing();
+                layout.Children.Add(list_words);
+            });
+
+            //When reading the user words from file, updates the list
+            MessagingCenter.Subscribe<ReadDictFiles>(this, "fileReadingDone", (sender) => {
+                layout.Children.Remove(list_words);
+                list_words.ItemsSource = Listing();
+                layout.Children.Add(list_words);
+            });
+
         }
 
         private async void AddNewItemButton_Clicked(object sender, EventArgs e)
@@ -197,6 +207,7 @@ namespace Wilson_oficial.Pages
 
         public IEnumerable<GroupingList<char, WordDefinition>> Listing(string filter = "")
         {
+            List<WordDefinition> _words = app.List;
             IEnumerable<WordDefinition> filtered_words = _words;
 
             if(!string.IsNullOrEmpty(filter))

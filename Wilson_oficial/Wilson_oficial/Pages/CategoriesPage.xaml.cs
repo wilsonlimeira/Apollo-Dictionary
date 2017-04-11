@@ -11,7 +11,7 @@ namespace Wilson_oficial.Pages
 	public partial class CategoriesPage : ContentPage
 	{
         ApolloDictionary app;
-        private List<WordDefinition> _words;
+        //private List<WordDefinition> _words;
         private bool isCategoriesOnScreen;
         ListView categories = new ListView();
 
@@ -26,7 +26,7 @@ namespace Wilson_oficial.Pages
 
             app = new ApolloDictionary();
             //app.List = ReadDictFiles.readAndBuildDictionary();
-            _words = app.List;
+            //_words = app.List;
 
             //Creating ListView
             list_words = ShowListCategories();
@@ -58,7 +58,7 @@ namespace Wilson_oficial.Pages
             {
                 Margin = new Thickness(0, 5, 0, 0),
                 Spacing = 5,
-                Children = { search_field, list_words }
+                Children = { list_words }
             };
             Content = layout;
 
@@ -71,12 +71,24 @@ namespace Wilson_oficial.Pages
             //Click on the item
             list_words.ItemTapped += List_words_ItemTapped;
 
-            
+            //When a new word is added the list is refreshed
+            MessagingCenter.Subscribe<MyPopupPage>(this, "newWord", (sender) => {
+                layout.Children.Remove(list_words);
+                list_words = ShowListCategories();
+                layout.Children.Add(list_words);
+            });
+
+            //fileReadingDone
+            MessagingCenter.Subscribe<ReadDictFiles>(this, "fileReadingDone", (sender) => {
+                layout.Children.Remove(list_words);
+                list_words = ShowListCategories();
+                layout.Children.Add(list_words);
+            });
         }
-        
+
         private ListView ShowListCategories()
         {
-            
+            List<WordDefinition> _words = app.List;
             SortedSet<string> catAux = new SortedSet<string>();
 
             foreach(WordDefinition def in _words)
@@ -105,6 +117,7 @@ namespace Wilson_oficial.Pages
 
         public IEnumerable<GroupingList<string, WordDefinition>> Listing(string filter = "")
         {
+            List<WordDefinition> _words = app.List;
             IEnumerable<WordDefinition> filtered_words = _words;
 
             //check if filter is not null or empty string
@@ -119,6 +132,7 @@ namespace Wilson_oficial.Pages
 
         public IEnumerable<GroupingList<string, WordDefinition>> ListingByCategory(string filter = "")
         {
+            List<WordDefinition> _words = app.List;
             IEnumerable<WordDefinition> filtered_words = _words;
 
             //check if filter is not null or empty string
@@ -181,7 +195,9 @@ namespace Wilson_oficial.Pages
                     WordDefinition def = wordDef.First();
                     DisplayAlert(def.Name, def.Definition, "OK");
                 }
-                //DisplayAlert(item.Name, item.Definition, "OK");
+
+                //add the clicked item to history list
+                UserProperties.HistoryList.Add(clickedItem.Name);
             }
 
 

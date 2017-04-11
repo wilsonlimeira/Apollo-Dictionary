@@ -6,14 +6,14 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Forms;
 
 namespace Wilson_oficial
 {
     class ReadDictFiles
     {
-        private static List<WordDefinition> userList;
 
-        public static List<WordDefinition> readAndBuildDictionary()
+        public static void readAndBuildDictionary(ApolloDictionary app)
         {
             string resourcePrefix = null;
 
@@ -34,14 +34,13 @@ namespace Wilson_oficial
             dictionary.AddRange(processWords(stream2));
 
             //get words from the personalized filesystem, which contains all the new words the user had added
-            userList = new List<WordDefinition>();
-            var end = ReadUserWordsFile(dictionary);
+            ReadUserWordsFile(app);
 
-            while (!end.Result) ;
-            return dictionary;
+            //update main Dictionary
+            app.List = dictionary;
         }
 
-        private static async Task<bool> ReadUserWordsFile(List<WordDefinition> dictionary)
+        private static async void ReadUserWordsFile(ApolloDictionary app)
         {
             var readText = await PCLHelper.ReadAllTextAsync("MyDictionary.txt", App.folder);
             
@@ -65,14 +64,27 @@ namespace Wilson_oficial
                         Category = word[2]
                     };
 
-                    userList.Add(newWord);
+                    try
+                    {
+                        //word is added to the Dictionary
+                        app.AddSingleWord = newWord;
+                    }
+                    catch (Exception e)
+                    {
+                        //don't do anything
+                    }
+                    
                 }
 
-                dictionary.AddRange(userList);
-                return true;
+                //Send a new message when the file was read
+                MessagingCenter.Send(new ReadDictFiles(), "fileReadingDone");
+            }
+            else
+            {
+                //call function again until it gets a result from the file
+                ReadUserWordsFile(app);
             }
 
-            return false;
         }
 
         private static List<WordDefinition> processWords(Stream stream)

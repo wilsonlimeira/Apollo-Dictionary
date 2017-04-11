@@ -26,7 +26,7 @@ namespace Wilson_oficial
 
             //initialize the dictionary
             app = new ApolloDictionary();
-            app.List = ReadDictFiles.readAndBuildDictionary();
+            ReadDictFiles.readAndBuildDictionary(app);
 
             //initializing the History methods to get user stored words
             userProp = new UserProperties();

@@ -49,15 +49,22 @@ namespace Wilson_oficial.Pages
 
         private void AddItemButton_Clicked(object sender, EventArgs e)
         {
+            string name = ToUpperFirstLetter(typedWord.Text);
+            string definition = ToUpperFirstLetter(typedDefinition.Text);
+            string category = ToUpperFirstLetter(typedCategory.Text);
+
             //add a new word to the database
             try
             {
                 app.AddSingleWord = new WordDefinition
                 {
-                    Name = typedWord.Text,
-                    Definition = typedDefinition.Text,
-                    Category = typedCategory.Text
+                    Name = name,
+                    Definition = definition,
+                    Category = category
                 };
+
+                //Send a message to every view to refresh their screen with this new word
+                MessagingCenter.Send<MyPopupPage>(this, "newWord");
             }
             catch (Exception except) //in case this word already exist
             {
@@ -65,7 +72,20 @@ namespace Wilson_oficial.Pages
             }
 
             OnBackButtonPressed();
-            
+
+        }
+
+        private static string ToUpperFirstLetter(string word)
+        {
+            if (string.IsNullOrEmpty(word))
+            {
+                return string.Empty;
+            }
+
+            var aux = word.ToCharArray();
+            aux[0] = char.ToUpper(aux[0]);
+
+            return new string(aux);
         }
 
         protected override void OnAppearing()

@@ -135,8 +135,9 @@ namespace Wilson_oficial.Pages
             //unmarking item
             ((ListView)sender).SelectedItem = null;
 
-            //add the clicked item to history list
-            UserProperties.HistoryList.Add(clickedItem.Name);
+            //add the clicked item to history list if it's not duplicated
+            if(!UserProperties.HistoryList.Contains(clickedItem.Name))
+                UserProperties.HistoryList.Add(clickedItem.Name);
 
         }
 

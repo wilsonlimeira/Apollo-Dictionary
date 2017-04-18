@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Wilson_oficial
@@ -57,7 +58,8 @@ namespace Wilson_oficial
 
             foreach (var word in splitLine)
             {
-                HistoryList.Add(word);
+                if(!HistoryList.Contains(word)) //check for duplicates
+                    HistoryList.Add(word);
             }
         }
     }

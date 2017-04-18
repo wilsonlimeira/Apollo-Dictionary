@@ -36,18 +36,7 @@ namespace Wilson_oficial
 
         private async void OpenFile()
         {
-            // get hold of the file system
-            //IFolder rootFolder = FileSystem.Current.LocalStorage;
-
-            // create a folder, if one does not exist already
             folder = await PCLHelper.CreateFolder("userData");
-
-            // create a file, overwriting any existing file
-            //userFile = await PCLHelper.CreateFile("MyDictionary.txt", folder);
-            //userFile = await folder.GetFileAsync("MyDictionary.txt");
-
-            // populate the file with some text
-            //await file.WriteAllTextAsync("Sample Text...");
         }
 
         protected override void OnStart ()

@@ -69,7 +69,6 @@ namespace Wilson_oficial
                     //writing in the file
                     //model used: word1 -> definition1 -> category1,category2,category3
                     PCLHelper.WriteTextAllAsync("MyDictionary.txt", value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine, App.folder);
-                    //App.userFile.WriteAllTextAsync(value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine);
                 }
                 else
                 {

@@ -57,7 +57,7 @@ namespace Wilson_oficial.Pages
             search_field = new SearchBar
             {
                 Placeholder = "Search here...",
-                WidthRequest = 225 //TODO: tentar mudar esse valor para ficar ajustavel a tela
+                WidthRequest = 225
             };
 
             //Adding items to Content
@@ -108,7 +108,6 @@ namespace Wilson_oficial.Pages
 
         private async void AddNewItemButton_Clicked(object sender, EventArgs e)
         {
-            //var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
             var page = new MyPopupPage();
 
             await Navigation.PushModalAsync(page);
@@ -132,30 +131,12 @@ namespace Wilson_oficial.Pages
                 WordDefinition def = wordDef.First();
                 DisplayAlert(def.Name, def.Definition, "OK");
             }
-            //DisplayAlert(item.Name, item.Definition, "OK");
 
             //unmarking item
             ((ListView)sender).SelectedItem = null;
 
             //add the clicked item to history list
             UserProperties.HistoryList.Add(clickedItem.Name);
-
-            /*
-            list_words.IsVisible = false; //hide the list of the View
-
-            var item = e.Item as WordDefinition;
-
-            //Testing how PCL works now:
-            await CreateRealFileAsync();
-
-            ShowWordSection(item);
-
-            Application.Current.Properties["a"] = item.Name; //Add searched word into Properties
-            //Application.Current.Properties.Keys.
-            //TODO see the best way to use it
-
-            //TODO save searched word http://stackoverflow.com/questions/31655327/how-can-i-save-some-user-data-locally-on-my-xamarin-forms-app
-            */
 
         }
 
@@ -186,11 +167,7 @@ namespace Wilson_oficial.Pages
             IFolder folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
 
             // create a file, overwriting any existing file
-            //IFile file = await folder.CreateFileAsync("MyFile.txt", CreationCollisionOption.ReplaceExisting);
             this.file = await folder.GetFileAsync("MyFile.txt");
-
-            // populate the file with some text
-            //await file.WriteAllTextAsync("Sample Text...");
         }
 
         private void Search_field_SearchButtonPressed(object sender, EventArgs e)

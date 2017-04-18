@@ -105,8 +105,8 @@ namespace Wilson_oficial
                     string definition = splitLine[1];
                     string category = "Other";
 
-                    //divide elements in Acronyms if they have only uppercase letters
-                    string exp = @"^[A-Z]+[a-z\&\/]*[A-Z]+[a-z]*$"; //@"[A-Z][a-z]+\s*[a-zA-Z]*"
+                    //divide elements in Acronyms if they match with the regular expression
+                    string exp = @"^[A-Z]+[a-z\&\/]*[A-Z]+[a-z]*$";
                     if (Regex.Match(name, exp).Success)
                     {
                         category = "Acronyms";

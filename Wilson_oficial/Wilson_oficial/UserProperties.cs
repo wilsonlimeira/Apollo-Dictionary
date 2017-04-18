@@ -37,7 +37,6 @@ namespace Wilson_oficial
         }
 
         //transform the whole list into a single string (e.g: {AHE, ATP, Good Morning} becomes "AHE|ATP|Good Morning")
-        //this process is necessary because "the Properties dictionary can only serialize primitive types for storage. Attempting to store other types (such as List<string> can fail silently."
         private string serializeWords()
         {
             string serialString = string.Empty;

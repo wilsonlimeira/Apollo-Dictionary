@@ -32,8 +32,16 @@ namespace Wilson_oficial.Pages
             };
             Content = layout;
 
-
+            //When item is tapped
             historyList.ItemTapped += HistoryList_ItemTapped;
+
+            //When a new word is added the list is refreshed
+            MessagingCenter.Subscribe<SearchPage>(this, "newWordHistory", (sender) =>
+            {
+                layout.Children.Remove(historyList);
+                historyList.ItemsSource = UserProperties.HistoryList.ToList();
+                layout.Children.Add(historyList);
+            });
         }
 
         

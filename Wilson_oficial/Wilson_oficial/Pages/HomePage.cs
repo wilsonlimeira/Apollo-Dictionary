@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Wilson_oficial.Pages
 {
-	public class HomePage : TabbedPage //tem outras opções, ver depois: https://blog.xamarin.com/wp-content/uploads/2014/06/Pages-sml.png
+	public class HomePage : TabbedPage
     {
 		public HomePage ()
 		{
@@ -16,20 +16,20 @@ namespace Wilson_oficial.Pages
 
             Children.Add(new SearchPage()
             {
-                Title = "Search"
-                //TODO Add icon
+                Title = "Search",
+                Icon = "Search-50.png"
             });
 
             Children.Add(new CategoriesPage()
             {
-                Title = "Categories"
-                //TODO Add icon
+                Title = "Categories",
+                Icon = "Category-50.png"
             });
 
             Children.Add(new HistoryPage()
             {
-                Title = "History"
-                //TODO Add icon
+                Title = "History",
+                Icon = "Past-50.png"
             });
         }
 	}

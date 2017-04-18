@@ -11,7 +11,7 @@ namespace Wilson_oficial.Pages
 	public partial class CategoriesPage : ContentPage
 	{
         ApolloDictionary app;
-        //private List<WordDefinition> _words;
+
         private bool isCategoriesOnScreen;
         ListView categories = new ListView();
 
@@ -25,27 +25,9 @@ namespace Wilson_oficial.Pages
 			InitializeComponent ();
 
             app = new ApolloDictionary();
-            //app.List = ReadDictFiles.readAndBuildDictionary();
-            //_words = app.List;
 
-            //Creating ListView
             list_words = ShowListCategories();
             isCategoriesOnScreen = true;
-            /*
-            list_words = new ListView
-            {
-                ItemTemplate = new DataTemplate(typeof(TextCell))
-                {
-                    Bindings = {
-                            { TextCell.TextProperty, new Binding ("Name") }
-                        }
-                },
-
-                GroupDisplayBinding = new Binding("Key"),
-                GroupShortNameBinding = new Binding("Key"),
-                IsGroupingEnabled = true,
-                ItemsSource = Listing(),
-            };*/
 
             //Creating SearchBar
             search_field = new SearchBar
@@ -198,7 +180,10 @@ namespace Wilson_oficial.Pages
 
                 //add the clicked item to history list if it's not duplicated
                 if (!UserProperties.HistoryList.Contains(clickedItem.Name))
-                    UserProperties.HistoryList.Add(clickedItem.Name);
+                    UserProperties.HistoryList.Push(clickedItem.Name);
+
+                //Send a message to HistoryPage to refresh their screen with this new word
+                MessagingCenter.Send<SearchPage>(new SearchPage(), "newWordHistory");
             }
 
 

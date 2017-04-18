@@ -137,7 +137,10 @@ namespace Wilson_oficial.Pages
 
             //add the clicked item to history list if it's not duplicated
             if(!UserProperties.HistoryList.Contains(clickedItem.Name))
-                UserProperties.HistoryList.Add(clickedItem.Name);
+                UserProperties.HistoryList.Push(clickedItem.Name);
+
+            //Send a message to HistoryPage to refresh their screen with this new word
+            MessagingCenter.Send<SearchPage>(this, "newWordHistory");
 
         }
 

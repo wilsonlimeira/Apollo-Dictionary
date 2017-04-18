@@ -7,12 +7,11 @@ namespace Wilson_oficial
 {
     class UserProperties
     {
-        //TODO: eliminar adicao de elementos repetidos e colocar a lista functionando como uma pilha
-        public static List<string> HistoryList { get; set; }
+        public static Stack<string> HistoryList { get; set; }
 
         public UserProperties()
         {
-            HistoryList = new List<string>();
+            HistoryList = new Stack<string>();
         }
 
         //save the current list into storage
@@ -59,7 +58,7 @@ namespace Wilson_oficial
             foreach (var word in splitLine)
             {
                 if(!HistoryList.Contains(word)) //check for duplicates
-                    HistoryList.Add(word);
+                    HistoryList.Push(word);
             }
         }
     }

@@ -53,26 +53,33 @@ namespace Wilson_oficial.Pages
             string definition = ToUpperFirstLetter(typedDefinition.Text);
             string category = ToUpperFirstLetter(typedCategory.Text);
 
-            //add a new word to the database
-            try
+            //if some field is empty or null
+            if (string.IsNullOrEmpty(name) | string.IsNullOrEmpty(definition) | string.IsNullOrEmpty(category))
             {
-                app.AddSingleWord = new WordDefinition
+                DisplayAlert("Empty field", "Some field is empty. Please fill in all fields.", "OK");
+            }
+            else
+            {
+                //add a new word to the database
+                try
                 {
-                    Name = name,
-                    Definition = definition,
-                    Category = category
-                };
+                    app.AddSingleWord = new WordDefinition
+                    {
+                        Name = name,
+                        Definition = definition,
+                        Category = category
+                    };
 
-                //Send a message to every view to refresh their screen with this new word
-                MessagingCenter.Send<MyPopupPage>(this, "newWord");
+                    //Send a message to every view to refresh their screen with this new word
+                    MessagingCenter.Send<MyPopupPage>(this, "newWord");
+                }
+                catch (Exception except) //in case this word already exist
+                {
+                    DisplayAlert("Sorry", except.Message, "OK");
+                }
+
+                OnBackButtonPressed();
             }
-            catch (Exception except) //in case this word already exist
-            {
-                DisplayAlert("Sorry", except.Message, "OK");
-            }
-
-            OnBackButtonPressed();
-
         }
 
         private static string ToUpperFirstLetter(string word)

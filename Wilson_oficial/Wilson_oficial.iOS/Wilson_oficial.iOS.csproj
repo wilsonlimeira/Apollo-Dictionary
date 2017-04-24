@@ -158,13 +158,13 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Past-50.png" />
+    <BundleResource Include="Resources\Past_50.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Category-50.png" />
+    <BundleResource Include="Resources\Category_50.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Search-50.png" />
+    <BundleResource Include="Resources\Search_50.png" />
   </ItemGroup>
   <Import Project="..\Wilson_oficial\Wilson_oficial.projitems" Label="Shared" Condition="Exists('..\Wilson_oficial\Wilson_oficial.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

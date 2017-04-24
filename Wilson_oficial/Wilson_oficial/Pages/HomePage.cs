@@ -17,19 +17,19 @@ namespace Wilson_oficial.Pages
             Children.Add(new SearchPage()
             {
                 Title = "Search",
-                Icon = "Search-50.png"
+                Icon = "Search_50.png"
             });
 
             Children.Add(new CategoriesPage()
             {
                 Title = "Categories",
-                Icon = "Category-50.png"
+                Icon = "Category_50.png"
             });
 
             Children.Add(new HistoryPage()
             {
                 Title = "History",
-                Icon = "Past-50.png"
+                Icon = "Past_50.png"
             });
         }
 	}

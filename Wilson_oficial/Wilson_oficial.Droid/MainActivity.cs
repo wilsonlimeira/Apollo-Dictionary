@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace Wilson_oficial.Droid
 {
-	[Activity (Label = "Wilson_oficial", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Apollo Dictionary", Icon = "@drawable/Apollo_icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)

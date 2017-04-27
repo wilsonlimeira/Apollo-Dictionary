@@ -9,6 +9,7 @@ namespace Wilson_oficial
     class ApolloDictionary
     {
         private static Dictionary<string, List<WordDefinition>> database = new Dictionary<string, List<WordDefinition>>();
+        private static string new_words = "";
 
         public List<WordDefinition> List
         {
@@ -66,9 +67,9 @@ namespace Wilson_oficial
                 {
                     database.Add(value.Name, new List<WordDefinition>() { value });
 
-                    //writing in the file
+                    //writing in the database to be added to a file later
                     //model used: word1 -> definition1 -> category1,category2,category3
-                    PCLHelper.WriteTextAllAsync("MyDictionary.txt", value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine, App.folder);
+                    new_words = new_words + value.Name + " -> " + value.Definition + " -> " + value.Category + Environment.NewLine;
                 }
                 else
                 {
@@ -84,6 +85,13 @@ namespace Wilson_oficial
             {
                 database = value;
             }
+        }
+
+        public void writeNewWordsToStorage()
+        {
+            //writing in the file
+            //model used: word1 -> definition1 -> category1,category2,category3
+            PCLHelper.WriteTextAllAsync("MyDictionary.txt", new_words, App.folder);
         }
 
     }

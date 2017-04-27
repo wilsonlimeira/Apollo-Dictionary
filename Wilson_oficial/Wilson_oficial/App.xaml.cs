@@ -53,6 +53,9 @@ namespace Wilson_oficial
 
             //save list in the Storage
             userProp.SaveList();
+
+            //save new words in the Storage
+            app.writeNewWordsToStorage();
 		}
 
 		protected override void OnResume ()
